@@ -14,7 +14,10 @@
 */
 
 // Code here
-
+function CarFactory(make, model) {
+  this.make = make;
+  this.model = model;
+}
 
 
 ////////// PROBLEM 2 //////////
@@ -33,7 +36,7 @@ function Employee(name, email, hireDate, salary) {
 */
 
 // Code here
-
+let bob = new Employee('Bob', 'bob@gmail.com', '01-02-98')
 
 
 ////////// PROBLEM 3 //////////
@@ -54,7 +57,15 @@ mustang.moveCar(); // Increments mustang' move property by 10. Returns the new m
 */
 
 // Code here
-
+function Car(make, model, year) {
+  this.make = make
+  this.model = model
+  this.year = year
+  this.move = 0;
+  this.moveCar = function() {
+    return this.move += 10
+  }
+}
 
 ////////// PROBLEM 4 ////////// 	
 
@@ -70,8 +81,13 @@ mustang.moveCar(); // Increments mustang' move property by 10. Returns the new m
 
 
  // Code here	
+Movie.prototype.changeRating = function (num) {
+  return ((this.rating + num) / 2)
+}
 
+let movie = new Movie ('bob', 'action', 3)
 
+console.log(movie.changeRating(4))
 
 
 ////////// PROBLEM 5 //////////	
@@ -83,7 +99,21 @@ mustang.moveCar(); // Increments mustang' move property by 10. Returns the new m
 
 
  // Code here	
+function User (name, age, email, savedPosts) {
+  this.name = name,
+  this.age = age,
+  this.email = email,
+  this.savedPosts = savedPosts
+}
 
+User.prototype.addSavedPost = function(id, title, rating) {
+  let post = {
+    id,
+    title,
+    rating
+  }
+  return this.savedPosts.push(post)
+}
 
 
 
@@ -96,7 +126,10 @@ mustang.moveCar(); // Increments mustang' move property by 10. Returns the new m
 
 
  // Code here	
-
+User.prototype.removeSavedPost = function (id) {
+  let index = this.savedPosts.indexOf(id)
+  return this.savedPosts.splice(index, 1)
+}
 
 
 
@@ -109,5 +142,11 @@ mustang.moveCar(); // Increments mustang' move property by 10. Returns the new m
 
 
  // Code here
-
+User.prototype.changePostRating = function (id, rating) {
+  this.savedPosts.find((post) => {
+    if(id === post.id) {
+      post.rating = rating
+    }
+  })
+}
 
